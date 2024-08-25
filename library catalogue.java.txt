@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Library1 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int cost = 80;
+        int count = 5;
+        String[] books = {"apple", "ball", "cat", "dog", "elephant"};
+        String[] authors = {"kein", "anderson", "henrich", "mark", "akash"};
+
+        System.out.println("Enter the book name:");
+        String bookName = s.nextLine();
+
+        boolean bookFound = false;
+        int bookIndex = -1;
+
+        // Check if the book is available
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].equalsIgnoreCase(bookName)) {
+                bookFound = true;
+                bookIndex = i;
+                break;
+            }
+        }
+
+        if (bookFound) {
+            System.out.println("Enter the author name:");
+            String authorName = s.nextLine();
+
+            if (authors[bookIndex].equalsIgnoreCase(authorName)) {
+                System.out.println("Book is available");
+                System.out.println("Book was published in 1999");
+                System.out.println("Total stocks are: " + count);
+                System.out.println("Cost of one book is $80");
+
+                System.out.println("How many books do you need?");
+                int quantity = s.nextInt();
+
+                if (quantity <= count) {
+                    double totalCost = quantity * cost;
+                    System.out.println("The total cost is: $" + totalCost);
+                } else {
+                    System.out.println("Sorry, the book is not available in the requested quantity.");
+                }
+            } else {
+                System.out.println("Sorry, the author name does not match.");
+            }
+        } else {
+            System.out.println("Sorry, the book is not available.");
+        }
+    }
+}
+
+    
+
